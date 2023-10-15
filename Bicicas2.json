@@ -1,0 +1,23 @@
+{"bicicas": [
+    {
+        "num": "01",
+        "ocupats": 11,
+        "llocs": 28,
+        "nom": "UJI - FCHS",
+        "lliures": 17
+    },
+    {
+        "num": "02",
+        "ocupats": 8,
+        "llocs": 28,
+        "nom": "ESTACIÓN DE FERROCARRIL Y AUTOBUSES",
+        "lliures": 20
+    },
+    {
+        "num": "03",
+        "ocupats": 13,
+        "llocs": 28,
+        "nom": "PLAZA DE PESCADERÍA",
+        "lliures": 15
+    }
+]}

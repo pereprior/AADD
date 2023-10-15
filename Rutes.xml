@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<rutes>
+  <ruta>
+    <nom>Pujada a Penyagolosa</nom>
+    <desnivell>530</desnivell>
+    <desnivellAcumulat>530</desnivellAcumulat>
+    <punts>
+      <point num="0">
+        <nom>Sant Joan</nom>
+        <latitud>40.251036</latitud>
+        <longitud>-0.354223</longitud>
+      </point>
+      <point num="1">
+        <nom>Encreuament</nom>
+        <latitud>40.25156</latitud>
+        <longitud>-0.352507</longitud>
+      </point>
+      <point num="2">
+        <nom>Barranc de la Pegunta</nom>
+        <latitud>40.247318</latitud>
+        <longitud>-0.351713</longitud>
+      </point>
+      <point num="3">
+        <nom>El Corralico</nom>
+        <latitud>40.231708</latitud>
+        <longitud>-0.348859</longitud>
+      </point>
+      <point num="4">
+        <nom>Penyagolosa</nom>
+        <latitud>40.222632</latitud>
+        <longitud>-0.350339</longitud>
+      </point>
+    </punts>
+  </ruta>
+  <ruta>
+    <nom>La Magdalena</nom>
+    <desnivell>51</desnivell>
+    <desnivellAcumulat>84</desnivellAcumulat>
+    <punts>
+      <point num="0">
+        <nom>Primer Molí</nom>
+        <latitud>39.99385</latitud>
+        <longitud>-0.032941</longitud>
+      </point>
+      <point num="1">
+        <nom>Segon Molí</nom>
+        <latitud>39.99628</latitud>
+        <longitud>-0.029427</longitud>
+      </point>
+      <point num="2">
+        <nom>Caminàs</nom>
+        <latitud>40.00513</latitud>
+        <longitud>-0.022569</longitud>
+      </point>
+      <point num="3">
+        <nom>Riu Sec</nom>
+        <latitud>40.006765</latitud>
+        <longitud>-0.02237</longitud>
+      </point>
+      <point num="4">
+        <nom>Sant Roc</nom>
+        <latitud>40.017906</latitud>
+        <longitud>-0.02289</longitud>
+      </point>
+      <point num="5">
+        <nom>Explanada</nom>
+        <latitud>40.034048</latitud>
+        <longitud>-0.00633</longitud>
+      </point>
+      <point num="6">
+        <nom>La Magdalena</nom>
+        <latitud>40.034519</latitud>
+        <longitud>-0.005856</longitud>
+      </point>
+    </punts>
+  </ruta>
+</rutes>

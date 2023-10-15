@@ -5,49 +5,68 @@ import java.io.EOFException
 import java.io.FileInputStream
 import java.io.ObjectInputStream
 import javax.xml.parsers.DocumentBuilderFactory
+import javax.xml.transform.OutputKeys
 import javax.xml.transform.TransformerFactory
 import javax.xml.transform.dom.DOMSource
 import javax.xml.transform.stream.StreamResult
 
-fun main(args:Array<String>){
-    val inputStream = ObjectInputStream(FileInputStream ("Rutes.obj"))
+fun main(args: Array<String>) {
+    val f = ObjectInputStream(FileInputStream ("Rutes.obj"))
 
-    val document = DocumentBuilderFactory.newInstance ().newDocumentBuilder().newDocument()
-    val element = document.createElement ("rutes")
-    document.appendChild(element)
+    val doc = DocumentBuilderFactory.newInstance ().newDocumentBuilder().newDocument()
+    val root = doc.createElement ("rutes")
+    doc.appendChild(root)
 
     try {
         while (true) {
-            val currentRute = inputStream.readObject () as Rute
-            val rute = document.createElement ("ruta")
+            val e = f.readObject () as Rute
+            val rute = doc.createElement ("ruta")
 
-            val name = document.createElement ("nom")
-            name.appendChild(document.createTextNode(currentRute.nom))
+            val name = doc.createElement ("nom")
+            name.appendChild(doc.createTextNode(e.nom))
             rute.appendChild(name)
 
-            val desnivell = document.createElement ("desnivell")
-            desnivell.appendChild(document.createTextNode(currentRute.desnivell.toString()))
+            val desnivell = doc.createElement("desnivell")
+            desnivell.setTextContent(e.desnivell.toString())
             rute.appendChild(desnivell)
 
-            val desnivellAcumulat = document.createElement ("desnivellAcumulat")
-            desnivellAcumulat.appendChild(document.createTextNode(currentRute.desnivellAcumulat.toString()))
-            rute.appendChild(desnivellAcumulat)
+            val acumulat = doc.createElement("desnivellAcumulat")
+            acumulat.setTextContent(e.desnivellAcumulat.toString())
+            rute.appendChild(acumulat)
 
-            val points = document.createElement ("punts")
-            for (e in 0 until currentRute.size()) {
-                val desnivellAcumulat = document.createElement ("desnivellAcumulat")
-                desnivellAcumulat.appendChild(document.createTextNode(currentRute.desnivellAcumulat.toString()))
-                points.appendChild(desnivellAcumulat)
+            val points = doc.createElement ("punts")
+
+            for (i in 0 until e.size()){
+                val point = doc.createElement("point")
+                point.setAttribute("num", Integer.toString(i))
+
+                val pointName = doc.createElement("nom")
+                pointName.setTextContent(e.getPuntNom(i))
+                point.appendChild(pointName)
+
+                val latitude = doc.createElement("latitud")
+                latitude.setTextContent(e.getPuntLatitud(i).toString())
+                point.appendChild(latitude)
+
+                val length = doc.createElement("longitud")
+                length.setTextContent(e.getPuntLongitud(i).toString())
+                point.appendChild(length)
+
+                points.appendChild(point)
             }
-            rute.appendChild(points)
 
-            element.appendChild(rute)
+            rute.appendChild(points)
+            root.appendChild(rute)
         }
 
     } catch (eof: EOFException) {
-        inputStream.close();
+        f.close();
     }
     val trans = TransformerFactory.newInstance().newTransformer()
 
-    trans.transform(DOMSource(document), StreamResult("Empleats.xml"))
+    trans.setOutputProperty(OutputKeys.INDENT, "yes")
+    trans.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "2")
+    trans.transform(DOMSource(doc), StreamResult("Rutes.xml"))
+
+    println("File correctly created")
 }
